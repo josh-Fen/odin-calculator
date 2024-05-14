@@ -1,7 +1,7 @@
 let first = null;
 let second = null;
 let operator = null;
-let displayNum = '';
+let displayNum = '0';
 
 
 function add(a, b) {
@@ -58,6 +58,9 @@ const equals = document.querySelector('.equals');
 
 numbers.forEach((num) => {
     num.addEventListener('click', (e) => {
+        if (displayNum === '0') {
+            displayNum = '';
+        }
         if (displayNum.length < 10) {
             if (!displayNum.includes('.') || e.currentTarget.textContent !== '.') {
                 displayNum += e.currentTarget.textContent;
