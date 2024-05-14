@@ -58,13 +58,11 @@ const equals = document.querySelector('.equals');
 
 numbers.forEach((num) => {
     num.addEventListener('click', (e) => {
-        //console.log(e.currentTarget.textContent);
         if (displayNum.length < 10) {
             if (!displayNum.includes('.') || e.currentTarget.textContent !== '.') {
                 displayNum += e.currentTarget.textContent;
             }
         }
-        console.log(`n is equal to ${displayNum}`);
         displayNumber(displayNum);
     });
 });
@@ -87,7 +85,6 @@ clear.addEventListener('click', (e) => {
 
 functions.forEach((func) => {
     func.addEventListener('click', (e) => {
-        //debugger;
         operator = e.currentTarget.id;
         if (first) {
             second = displayNum;
@@ -95,12 +92,10 @@ functions.forEach((func) => {
             first = displayNum;
         }
         displayNum = '';
-        console.log(`First is ${first} and Second is ${second}`);
     });
 });
 
 equals.addEventListener('click', (e) => {
-    console.log(`First is ${first} Second is ${second} and Operator is ${operator}`);
     if (first && second && operator) {
         operate(+first, operator, +second);
     } else if (first && displayNum && operator) {
