@@ -60,7 +60,9 @@ numbers.forEach((num) => {
     num.addEventListener('click', (e) => {
         //console.log(e.currentTarget.textContent);
         if (displayNum.length < 10) {
-            displayNum += e.currentTarget.textContent;
+            if (!displayNum.includes('.') || e.currentTarget.textContent !== '.') {
+                displayNum += e.currentTarget.textContent;
+            }
         }
         console.log(`n is equal to ${displayNum}`);
         displayNumber(displayNum);
