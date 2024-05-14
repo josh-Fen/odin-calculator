@@ -32,9 +32,11 @@ body {
     margin-bottom: 10px;
     height: 80px;
     display: flex;
+    justify-content: end;
     align-items: center;
     width: 470px;
     padding-left: 5px;
+    padding-right: 2px;
     font-size: 80px;
 }
 
@@ -55,4 +57,8 @@ button {
 
 button.num {
     background-color: gold;
+}
+
+.clear {
+    flex-grow: 1;
 }

@@ -20,22 +20,33 @@ function divide(a, b) {
     return a / b;
 }
 
-function operate(first, operator, second) {
-    switch (operator) {
+function operate(opFirst, opFunction, opSecond) {
+    switch (opFunction) {
         case 'add':
-            add(first, second);
+            first = add(opFirst, opSecond);
             break;
         case 'subtract':
-            subtract(first, second);
+            first = subtract(opFirst, opSecond);
             break;
         case 'multiply':
-            multiply(first, second);
+            first = multiply(opFirst, opSecond);
             break;
         case 'divide':
-            divide(first, second);
+            first = divide(opFirst, opSecond);
             break;
-
     }
+    if (first > 9999999999) {
+        displayNumber(String('NaN'));
+        first = null;
+    } else {
+        if (first % 1 > 0) {
+            first = +first.toFixed(5);
+        }
+        displayNumber(String(first));
+    }
+    displayNum = '';
+    second = null;
+    operator = null;
 }
 
 const display = document.querySelector('.result');
@@ -69,11 +80,12 @@ clear.addEventListener('click', (e) => {
     first = '';
     second = '';
     operator = null;
-    displayNumber(displayNum);
+    displayNumber('0');
 });
 
 functions.forEach((func) => {
     func.addEventListener('click', (e) => {
+        //debugger;
         operator = e.currentTarget.id;
         if (first) {
             second = displayNum;
@@ -86,6 +98,11 @@ functions.forEach((func) => {
 });
 
 equals.addEventListener('click', (e) => {
-    console.log('check');
+    console.log(`First is ${first} Second is ${second} and Operator is ${operator}`);
+    if (first && second && operator) {
+        operate(+first, operator, +second);
+    } else if (first && displayNum && operator) {
+        operate(+first, operator, +displayNum);
+    }
 });
 
